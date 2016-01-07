@@ -1,4 +1,4 @@
-import cfg
+import config
 import socket
 import re
 
@@ -23,14 +23,14 @@ while True:
 		username = re.search(r"\w+",response).group(0)
 		message = CHAT_MSG.sub("", response)
 		print(username + ": " + message)
-		for pattern in cfg.PATT:
+		for pattern in config.PATT:
 			if re.match(pattern, message):
 				ban(s, username)
 				break
-	sleep(1 / cfg.RATE)
+	sleep(1 / config.RATE)
 
 def chat(sock, msg):
-	sock.send("PRIVMSG #{} :{}".format(cfg.CHAN,msg))
+	sock.send("PRIVMSG #{} :{}".format(config.CHAN,msg))
 
 def ban(sock, user):
 	chat(sock, ".ban {}".format(user))
