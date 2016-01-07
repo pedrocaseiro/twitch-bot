@@ -18,6 +18,7 @@ while True:
 		s.send("PONG :tmi.twitch.tv\r\n".encode("utf-8"))
 	else:
 		print(response)
+	sleep(1 / cfg.RATE)
 
 def chat(sock, msg):
 	sock.send("PRIVMSG #{} :{}".format(cfg.CHAN,msg))
