@@ -1,7 +1,10 @@
 import cfg
 import socket
+import re
 
-s=socket.socket()
+CHAT_MSG = re.compile(r"^:\w+!\w+@\w+\.tmi\.twitch\.tv PRIVMSG #\w+ :")
+
+s = socket.socket()
 s.connect((HOST,PORT))
 
 #send the oauthtocken, nick and channel to join
@@ -17,7 +20,9 @@ while True:
 	if response == "PING :tmi.twitch.tv\r\n":
 		s.send("PONG :tmi.twitch.tv\r\n".encode("utf-8"))
 	else:
-		print(response)
+		username = re.search(r"\w+",line).group(0)
+		message = CHAT_MSG.sub("", line)
+		print(username + ": " + message)
 	sleep(1 / cfg.RATE)
 
 def chat(sock, msg):
