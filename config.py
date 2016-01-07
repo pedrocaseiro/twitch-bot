@@ -4,3 +4,10 @@ NICK = "BotOfTheBots"
 PASS = "oauth:mogweg1e7i4wk4tljlovi360t71o4h"
 CHAN = "BotOfTheBots"
 RATE = (20/30)
+
+
+#all patterns we want to "filter"
+PATT = [
+	r"swear",
+	r"TSM"
+]
