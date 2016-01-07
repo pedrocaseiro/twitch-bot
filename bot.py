@@ -5,12 +5,12 @@ import re
 CHAT_MSG = re.compile(r"^:\w+!\w+@\w+\.tmi\.twitch\.tv PRIVMSG #\w+ :")
 
 s = socket.socket()
-s.connect((HOST,PORT))
+s.connect((config.HOST,config.PORT))
 
 #send the oauthtocken, nick and channel to join
-s.send("PASS {}\r\n".format(PASS).encode("utf-8"))
-s.send("NICK {}\r\n".format(NICK).encode("utf-8"))
-s.send("JOIN {}\r\n".format(CHAN).encode("utf-8"))
+s.send("PASS {}\r\n".format(config.PASS).encode("utf-8"))
+s.send("NICK {}\r\n".format(config.NICK).encode("utf-8"))
+s.send("JOIN {}\r\n".format(config.CHAN).encode("utf-8"))
 
 
 
