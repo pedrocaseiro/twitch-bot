@@ -1,9 +1,7 @@
 import socket
 from settings import HOST, PORT, IDENT, PASS, CHANNEL
 
-
 def openSocket():
-
 	s = socket.socket()
 	s.connect((HOST, PORT))
 	s.send("PASS " + PASS + "\r\n")
