@@ -9,7 +9,6 @@ def openSocket():
 	s.send("JOIN #" + CHANNEL + "\r\n")
 	return s
 
-
 def sendMessage(s, message):
 	messageTemp = "PRIVMSG #" + CHANNEL + " :" + message
 	s.send(messageTemp + "\r\n")
